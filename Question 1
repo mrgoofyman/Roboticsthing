@@ -1,0 +1,35 @@
+package frc.robot;
+
+import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
+public class ArcadeDriveSubsystem {
+    private CANSparkMax frontLeftDrive = new CANSparkMax(1, MotorType.kBrushless);
+    private CANSparkMax frontRightDrive = new CANSparkMax(2, MotorType.kBrushless);
+    private CANSparkMax rearLeftDrive = new CANSparkMax(3, MotorType.kBrushless);
+    private CANSparkMax rearRightDrive = new CANSparkMax(4, MotorType.kBrushless);
+
+private SpeedControllerGroup leftDrive = new SpeedControllerGroup(frontLeftDrive, rearLeftDrive); 
+private SpeedControllerGroup rightDrive = new SpeedControllerGroup(frontRightDrive, rearRightDrive);
+
+private DifferentialDrive m_robotDrive = new DifferentialDrive(m_leftDrive, m_rightDrive);
+
+}
+
+public void autonomousCommand () {
+if (m_timer.get() < 10.0) {
+  driveSubsystem.arcadeDrive(1.0, 0.0);
+private final Timer m_timer = new Timer();
+  }
+else {
+driveSubsystem.arcadeDrive(0.0, 0.25);
+  }
+}
+
